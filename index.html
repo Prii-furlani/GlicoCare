@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GlicoCare — Apoio em Diabetes Tipo 1 | Rotina Segura e Sem Pânico</title>
+  <meta name="description" content="Apoio pedagógico, guias escolares práticos e acolhimento real para famílias que vivem o Diabetes Tipo 1 (DM1).">
+  <style>
+    /* =====================================================================
+       DESIGN SYSTEM & VARIÁVEIS — GLICOCARE (PALETA PORTO SEGURO)
+       ===================================================================== */
+    :root {
+      --color-bg: #EAE4D9;
+      --color-surface: #F6F3EE;
+      --color-surface-alt: #EFEAE1;
+      --color-text: #2E2824;
+      --color-text-light: #5E544D;
+      --color-primary: #7C533F;
+      --color-primary-dark: #5F3E2E;
+      --color-cta: #3B7E48;
+      --color-cta-hover: #2E6439;
+      --color-border: #D8CFC2;
+
+      --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --font-heading: Georgia, 'Times New Roman', Times, serif;
+
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 1.875rem;
+      --text-4xl: 2.25rem;
+
+      --container-width: 1200px;
+      --padding-mobile: 20px;
+      --padding-desktop: 32px;
+      --section-gap-mobile: 60px;
+      --section-gap-desktop: 100px;
+
+      --transition-fast: 300ms;
+      --transition-medium: 600ms;
+      --easing: ease-in-out;
+      --reveal-delay: 200ms;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 40px;
+      --radius-full: 50%;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* =====================================================================
+       LAYOUT E CLASSES REUTILIZÁVEIS
+       ===================================================================== */
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 var(--padding-mobile);
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 var(--padding-desktop);
+      }
+    }
+
+    .section {
+      padding: var(--section-gap-mobile) 0;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: var(--section-gap-desktop) 0;
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 16px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 24px;
+      height: 1.5px;
+      background-color: var(--color-primary);
+    }
+
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-cta);
+    }
+
+    .heading-xl {
+      font-family: var(--font-heading);
+      font-size: 2.25rem;
+      line-height: 1.15;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .heading-xl {
+        font-size: 3.5rem;
+      }
+    }
+
+    .heading-lg {
+      font-family: var(--font-heading);
+      font-size: 1.875rem;
+      line-height: 1.2;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .heading-lg {
+        font-size: 2.65rem;
+      }
+    }
+
+    .heading-md {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      line-height: 1.3;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 12px;
+    }
+
+    .highlight-underline {
+      color: var(--color-primary);
+      font-style: italic;
+      border-bottom: 3px solid var(--color-cta);
+      padding-bottom: 2px;
+    }
+
+    .highlight-italic {
+      color: var(--color-primary);
+      font-style: italic;
+    }
+
+    .subtitle {
+      font-size: var(--text-lg);
+      color: var(--color-text-light);
+      max-width: 620px;
+      margin-bottom: 32px;
+    }
+
+    /* Botões */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 26px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all var(--transition-fast) var(--easing);
+      cursor: pointer;
+      border: 1.5px solid transparent;
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background-color: var(--color-cta);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-cta-hover);
+      transform: scale(1.03);
+    }
+
+    .btn-secondary {
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      border-color: var(--color-border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-primary);
+      transform: scale(1.03);
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    /* =====================================================================
+       HEADER / NAVBAR RESPONSIVA
+       ===================================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      height: 80px;
+      background: rgba(234, 228, 217, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 100;
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-text);
+    }
+
+    .brand-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      line-height: 1.1;
+      color: var(--color-text);
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 26px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--color-text);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-cta-desktop {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .nav-cta-desktop {
+        display: inline-flex;
+        min-height: 44px;
+        padding: 0 20px;
+        font-size: 0.88rem;
+      }
+    }
+
+    .menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px;
+      box-shadow: 0 12px 24px rgba(46, 40, 36, 0.08);
+      z-index: 99;
+    }
+
+    .mobile-drawer.open {
+      display: block;
+    }
+
+    .mobile-drawer a {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--color-border);
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    .mobile-drawer a:last-child {
+      border-bottom: none;
+      margin-top: 12px;
+      text-align: center;
+      color: #FFFFFF;
+    }
+
+    /* =====================================================================
+       SEÇÃO 1: HERO
+       ===================================================================== */
+    .hero-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-grid {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .hero-content {
+        flex: 1.15;
+      }
+      .hero-visual {
+        flex: 0.85;
+      }
+    }
+
+    .community-badge {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar-stack {
+      display: flex;
+    }
+
+    .avatar-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      border: 2px solid var(--color-bg);
+      margin-left: -8px;
+    }
+
+    .avatar-circle:first-child {
+      margin-left: 0;
+      background-color: var(--color-primary);
+    }
+
+    .avatar-circle:nth-child(2) {
+      background-color: var(--color-cta);
+    }
+
+    .avatar-circle:nth-child(3) {
+      background-color: #9A7B69;
+    }
+
+    .community-text {
+      font-size: 0.85rem;
+      line-height: 1.3;
+      color: var(--color-text-light);
+    }
+
+    .community-text strong {
+      display: block;
+      color: var(--color-text);
+    }
+
+    .hero-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      position: relative;
+      box-shadow: 0 12px 32px rgba(46, 40, 36, 0.06);
+    }
+
+    .lufy-speech-top {
+      background-color: var(--color-text);
+      color: var(--color-surface);
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .lufy-speech-top span {
+      display: block;
+      font-size: 0.78rem;
+      color: #D8CFC2;
+      margin-top: 4px;
+    }
+
+    .lufy-illustration-box {
+      background: linear-gradient(145deg, #F0EAE0, #E3DACB);
+      border-radius: var(--radius-md);
+      padding: 32px 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .lufy-emoji {
+      font-size: 4.5rem;
+      line-height: 1;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .sensor-tag {
+      display: inline-block;
+      background-color: #FFFFFF;
+      border: 1px solid var(--color-border);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    /* =====================================================================
+       SEÇÃO 2: BENEFÍCIOS & DIFERENCIAIS (3 COLUNAS)
+       ===================================================================== */
+    .grid-3 {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 {
+        flex-direction: row;
+      }
+      .grid-3 > .card {
+        flex: 1;
+      }
+    }
+
+    .card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 32px 26px;
+      transition: transform var(--transition-fast) var(--easing), box-shadow var(--transition-fast) var(--easing);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(46, 40, 36, 0.08);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-bg);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .card-icon.green {
+      background-color: var(--color-cta);
+      color: #FFFFFF;
+    }
+
+    .card-num {
+      font-family: var(--font-heading);
+      font-style: italic;
+      color: var(--color-text-light);
+      font-size: 1rem;
+    }
+
+    .card-divider {
+      height: 1px;
+      background-color: var(--color-border);
+      margin-top: 24px;
+    }
+
+    /* =====================================================================
+       SEÇÃO 3: PROVA SOCIAL (DEPOIMENTOS MODERADOS)
+       ===================================================================== */
+    .social-proof-banner {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .social-proof-banner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .stat-highlight {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-cta);
+      line-height: 1;
+    }
+
+    .quote-text {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--color-text);
+      margin-bottom: 16px;
+    }
+
+    .quote-author {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* =====================================================================
+       SEÇÃO 4: COMO FUNCIONA (3 PASSOS)
+       ===================================================================== */
+    .step-badge {
+      display: inline-block;
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 16px;
+    }
+
+    /* =====================================================================
+       SEÇÃO 5: OFERTA E DIFERENCIAIS DO LUFY (TECNOLOGIA NO BRAÇO)
+       ===================================================================== */
+    .lufy-feature-box {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+    }
+
+    @media (min-width: 768px) {
+      .lufy-feature-box {
+        padding: 48px;
+      }
+    }
+
+    .pillars-row {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    @media (min-width: 768px) {
+      .pillars-row {
+        flex-direction: row;
+      }
+      .pillar-card {
+        flex: 1;
+      }
+    }
+
+    .pillar-card {
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+    }
+
+    .pillar-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 4px;
+    }
+
+    /* =====================================================================
+       SEÇÃO 6: PLANOS E MODALIDADES DE APOIO
+       ===================================================================== */
+    .grid-2 {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        flex-direction: row;
+      }
+      .grid-2 > .card {
+        flex: 1;
+      }
+    }
+
+    .plan-card.featured {
+      border: 2px solid var(--color-cta);
+      position: relative;
+    }
+
+    .plan-tag {
+      display: inline-block;
+      background-color: var(--color-cta);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 14px;
+    }
+
+    .plan-price {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin: 12px 0;
+    }
+
+    .plan-list {
+      list-style: none;
+      margin: 20px 0 28px;
+    }
+
+    .plan-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.95rem;
+      color: var(--color-text-light);
+    }
+
+    .plan-list li::before {
+      content: "✓ ";
+      color: var(--color-cta);
+      font-weight: 700;
+    }
+
+    /* =====================================================================
+       SEÇÃO 7: FAQ (ACORDEÃO INTERATIVO)
+       ===================================================================== */
+    .faq-list {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+    }
+
+    .faq-icon {
+      font-size: 1.3rem;
+      color: var(--color-primary);
+      transition: transform var(--transition-fast);
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-fast) var(--easing);
+      padding: 0 24px;
+      color: var(--color-text-light);
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 260px;
+      padding-bottom: 20px;
+    }
+
+    /* =====================================================================
+       SEÇÃO 8: GARANTIAS & ÉTICA
+       ===================================================================== */
+    .guarantee-box {
+      background-color: var(--color-surface);
+      border: 1.5px solid var(--color-primary);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      text-align: center;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .guarantee-shield {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-bg);
+      color: var(--color-cta);
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+
+    /* =====================================================================
+       SEÇÃO 9: FORMULÁRIO DE DOWNLOAD DO GUIA ESCOLAR
+       ===================================================================== */
+    .form-wrapper {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--color-text);
+    }
+
+    .form-control {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--color-border);
+      background-color: #FFFFFF;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--color-text);
+      transition: border-color var(--transition-fast);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-cta);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+      margin-bottom: 22px;
+    }
+
+    .checkbox-row input {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--color-cta);
+    }
+
+    .form-feedback {
+      display: none;
+      background-color: #E3F1E6;
+      border: 1px solid var(--color-cta);
+      color: #204A28;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      margin-top: 16px;
+      font-weight: 600;
+    }
+
+    /* =====================================================================
+       SEÇÃO 10: CTA FINAL
+       ===================================================================== */
+    .cta-final-box {
+      background-color: var(--color-primary);
+      color: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: 48px 28px;
+      text-align: center;
+    }
+
+    .cta-final-box h2 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .cta-final-box h2 {
+        font-size: 2.75rem;
+      }
+    }
+
+    .cta-final-box p {
+      max-width: 600px;
+      margin: 0 auto 28px;
+      color: #F6F3EE;
+      font-size: 1.08rem;
+    }
+
+    /* =====================================================================
+       SEÇÃO 11: RODAPÉ & DISCLAIMER MÉDICO OBRIGATÓRIO
+       ===================================================================== */
+    footer {
+      background-color: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      padding: 48px 0 32px;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .disclaimer-box {
+      background-color: var(--color-bg);
+      border-left: 4px solid var(--color-primary);
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    /* =====================================================================
+       WIDGET FLUTUANTE DO MASCOTE LUFY (BOT DE TRIAGEM)
+       ===================================================================== */
+    .lufy-widget-trigger {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      padding: 8px 18px 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(46, 40, 36, 0.14);
+      cursor: pointer;
+      z-index: 999;
+      transition: transform var(--transition-fast);
+    }
+
+    .lufy-widget-trigger:hover {
+      transform: scale(1.04);
+    }
+
+    .lufy-trigger-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      position: relative;
+    }
+
+    .lufy-online-dot {
+      width: 10px;
+      height: 10px;
+      background-color: var(--color-cta);
+      border: 2px solid var(--color-surface);
+      border-radius: var(--radius-full);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    .lufy-trigger-text small {
+      display: block;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-light);
+      font-weight: 700;
+    }
+
+    .lufy-trigger-text strong {
+      font-size: 0.9rem;
+      color: var(--color-text);
+    }
+
+    .lufy-chat-window {
+      display: none;
+      position: fixed;
+      bottom: 86px;
+      right: 20px;
+      width: 340px;
+      max-width: calc(100vw - 40px);
+      background-color: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 16px 40px rgba(46, 40, 36, 0.2);
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .lufy-chat-window.open {
+      display: block;
+    }
+
+    .lufy-chat-header {
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lufy-chat-close {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .lufy-chat-body {
+      padding: 18px;
+      max-height: 360px;
+      overflow-y: auto;
+    }
+
+    .lufy-msg {
+      background-color: var(--color-bg);
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      margin-bottom: 12px;
+      color: var(--color-text);
+    }
+
+    .lufy-scenario-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background-color: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: border-color 200ms;
+    }
+
+    .lufy-scenario-btn:hover {
+      border-color: var(--color-cta);
+    }
+
+    /* =====================================================================
+       ANIMAÇÕES DE SCROLL REVEAL
+       ===================================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity var(--transition-medium) var(--easing), transform var(--transition-medium) var(--easing);
+      will-change: opacity, transform;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 150ms; }
+    .reveal-delay-2 { transition-delay: 300ms; }
+  </style>
+</head>
+<body>
+
+  <!-- ===================================================================
+       HEADER / NAVBAR RESPONSIVA
+       =================================================================== -->
+  <header>
+    <div class="container nav-inner">
+      <a href="#inicio" class="brand" aria-label="GlicoCare Início">
+        <div class="brand-avatar">🐨</div>
+        <div class="brand-text">
+          <strong>GlicoCare</strong>
+          <span>Apoio em Diabetes</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação Principal">
+        <a href="#inicio">Início</a>
+        <a href="#beneficios">Diferenciais</a>
+        <a href="#como-funciona">Como Funciona</a>
+        <a href="#lufy">Conheça o Lufy</a>
+        <a href="#modalidades">Apoio</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a href="#guia-escolar" class="btn btn-primary nav-cta-desktop">Baixar Guia Escolar</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+        ☰
+      </button>
+    </div>
+
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="#inicio" class="mobile-link">Início</a>
+      <a href="#beneficios" class="mobile-link">Diferenciais</a>
+      <a href="#como-funciona" class="mobile-link">Como Funciona</a>
+      <a href="#lufy" class="mobile-link">Conheça o Lufy</a>
+      <a href="#modalidades" class="mobile-link">Modalidades de Apoio</a>
+      <a href="#faq" class="mobile-link">Dúvidas Frequentes (FAQ)</a>
+      <a href="#guia-escolar" class="btn btn-primary mobile-link">Baixar Guia Escolar Gratuito</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- =================================================================
+         SEÇÃO 1: HERO
+         ================================================================= -->
+    <section id="inicio" class="section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow-pill">
+            <span class="eyebrow-dot"></span>
+            Informação que acolhe. Cuidado que aproxima.
+          </div>
+
+          <h1 class="heading-xl">
+            Transforme o diagnóstico em uma rotina <span class="highlight-underline">segura</span> e sem pânico.
+          </h1>
+
+          <p class="subtitle">
+            Apoio pedagógico e acolhimento prático para famílias que vivem o Diabetes Tipo 1 — do diagnóstico à autonomia, um passo de cada vez.
+          </p>
+
+          <div class="btn-group">
+            <a href="#guia-escolar" class="btn btn-primary">Quero começar com segurança →</a>
+            <a href="#lufy" class="btn btn-secondary">Conheça o Lufy ↗</a>
+          </div>
+
+          <div class="community-badge">
+            <div class="avatar-stack" aria-hidden="true">
+              <div class="avatar-circle">P</div>
+              <div class="avatar-circle">M</div>
+              <div class="avatar-circle">A</div>
+            </div>
+            <div class="community-text">
+              <strong>Uma rede que entende</strong>
+              você não precisa saber tudo hoje.
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="lufy-speech-top">
+              “Ei, respira. A gente vai aprender isso juntos.”
+              <span>— Lufy, seu guardião da jornada</span>
+            </div>
+            <div class="lufy-illustration-box">
+              <span class="lufy-emoji" role="img" aria-label="Mascote Lufy Coala">🐨</span>
+              <span class="sensor-tag">Sensor no braço &amp; acolhimento no coração</span>
+            </div>
+            <div class="hero-card-footer">
+              <div>
+                <small style="text-transform:uppercase; font-weight:700; color:var(--color-primary); font-size:0.7rem;">Porto Seguro</small>
+                <strong style="display:block; font-family:var(--font-heading);">Conteúdo claro e responsável</strong>
+              </div>
+              <a href="#guia-escolar" class="btn btn-primary" style="min-height:42px; padding:0 16px;">Guia PDF ↓</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SEÇÃO 2: BENEFÍCIOS & DIFERENCIAIS
+         ================================================================= -->
+    <section id="beneficios" class="section">
+      <div class="container">
+        <span class="eyebrow">Um cuidado que vai além</span>
+        <h2 class="heading-lg">Por que a GlicoCare é <span class="highlight-italic">diferente?</span></h2>
+        <p class="subtitle">
+          Não entregamos apenas informação técnica. Criamos caminhos reais para que ela faça sentido na escola, no quarto e no dia a dia.
+        </p>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card-top">
+              <div class="card-icon">🎓</div>
+              <span class="card-num">01</span>
+            </div>
+            <h3 class="heading-md">Pedagogia do Cuidado Escolar</h3>
+            <p style="color:var(--color-text-light);">
+              Traduzimos o DM1 para a rotina da escola, criando pontes seguras entre família, educadores e crianças sem burocracia fria.
+            </p>
+            <div class="card-divider"></div>
+          </article>
+
+          <article class="card reveal reveal-delay-1">
+            <div class="card-top">
+              <div class="card-icon green">💚</div>
+              <span class="card-num">02</span>
+            </div>
+            <h3 class="heading-md">Vivência Real em 1ª Pessoa</h3>
+            <p style="color:var(--color-text-light);">
+              Conteúdo construído por quem conhece a rotina, o cansaço das madrugadas, as dúvidas e as pequenas vitórias de perto.
+            </p>
+            <div class="card-divider"></div>
+          </article>
+
+          <article class="card reveal reveal-delay-2">
+            <div class="card-top">
+              <div class="card-icon">🧭</div>
+              <span class="card-num">03</span>
+            </div>
+            <h3 class="heading-md">Trilhas por Ciclo de Vida</h3>
+            <p style="color:var(--color-text-light);">
+              Orientações práticas que acompanham cada fase — do choque do diagnóstico à autonomia juvenil, sem sobrecarregar a família.
+            </p>
+            <div class="card-divider"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SEÇÃO 3: PROVA SOCIAL (VOZES QUE JÁ PASSARAM POR AQUI)
+         ================================================================= -->
+    <section id="comunidade" class="section">
+      <div class="container">
+        <span class="eyebrow">Vozes que já passaram por aqui</span>
+        <h2 class="heading-lg">Acolhimento real entre famílias</h2>
+
+        <div class="social-proof-banner reveal">
+          <div>
+            <div class="stat-highlight">100%</div>
+            <p style="font-weight:600; color:var(--color-text);">Curadoria humanizada e depoimentos moderados</p>
+          </div>
+          <p style="max-width:540px; color:var(--color-text-light);">
+            Cada relato compartilhado na GlicoCare passa por revisão cuidadosa para manter um espaço livre de julgamentos e fórmulas milagrosas.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card reveal">
+            <p class="quote-text">
+              “Eu sentia um nó na garganta toda vez que deixava meu filho no portão da escola. O Guia Escolar nos deu um roteiro claro para conversar com a coordenação sem pânico.”
+            </p>
+            <div class="quote-author">— Mariana S., mãe do Lucas (8 anos) • São Paulo/SP</div>
+          </div>
+
+          <div class="card reveal reveal-delay-1">
+            <p class="quote-text">
+              “Pela primeira vez encontrei um lugar que não me tratou com sermões médicos frios, mas acolheu o cansaço das minhas madrugadas vigiando o sensor.”
+            </p>
+            <div class="quote-author">— Camila R., mãe da Sofia (11 anos) • Curitiba/PR</div>
+          </div>
+
+          <div class="card reveal reveal-delay-2">
+            <p class="quote-text">
+              “Meu filho se identificou na hora com o Lufy usando o sensor no braço. Ajudou a explicar para os amiguinhos da sala o que era aquele aparelhinho.”
+            </p>
+            <div class="quote-author">— Fernanda T., mãe do Pedro (6 anos) • Belo Horizonte/MG</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SEÇÃO 4: COMO FUNCIONA (3 PASSOS)
+         ================================================================= -->
+    <section id="como-funciona" class="section">
+      <div class="container">
+        <span class="eyebrow">Passo a passo sem pressa</span>
+        <h2 class="heading-lg">Como a GlicoCare apoia sua rotina</h2>
+
+        <div class="grid-3">
+          <div class="card reveal">
+            <span class="step-badge">Passo 1</span>
+            <h3 class="heading-md">Baixe o Guia Escolar Gratuito</h3>
+            <p style="color:var(--color-text-light);">
+              Receba imediatamente um material prático em PDF para alinhar cuidados básicos, sinais de alerta e parcerias com professores.
+            </p>
+          </div>
+
+          <div class="card reveal reveal-delay-1">
+            <span class="step-badge">Passo 2</span>
+            <h3 class="heading-md">Encontre Respiro com o Lufy</h3>
+            <p style="color:var(--color-text-light);">
+              Acesse artigos diretos sobre hipoglicemia sem susto, adaptação emocional e use o assistente do Lufy para triagem rápida em momentos de dúvida.
+            </p>
+          </div>
+
+          <div class="card reveal reveal-delay-2">
+            <span class="step-badge">Passo 3</span>
+            <h3 class="heading-md">Conecte-se com Especialistas</h3>
+            <p style="color:var(--color-text-light);">
+              Quando precisar de acompanhamento individualizado, agende consultas online com endocrinologistas, nutricionistas e psicólogos verificados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SEÇÃO 5: OFERTA E DIFERENCIAIS DO LUFY
+         ================================================================= -->
+    <section id="lufy" class="section">
+      <div class="container">
+        <div class="lufy-feature-box reveal">
+          <span class="eyebrow">Conheça o Lufy</span>
+          <h2 class="heading-lg">Tecnologia no braço. <span class="highlight-italic">Afeto</span> no coração.</h2>
+          <p class="subtitle">
+            Lufy nasceu para ser uma presença familiar nos momentos em que tudo parece novo demais. Um coala guardião que transforma termos difíceis em conversas possíveis.
+          </p>
+          <p style="color:var(--color-text-light); max-width:680px;">
+            Com seu sensor no braço, ele mostra às crianças que a tecnologia faz parte do cuidado — mas que são o carinho, a informação e a rede de apoio que tornam a jornada mais leve.
+          </p>
+
+          <div class="pillars-row">
+            <div class="pillar-card">
+              <h3>Calma</h3>
+              <p style="color:var(--color-text-light); font-size:0.95rem;">para acolher cada dúvida sem julgamentos</p>
+            </div>
+            <div class="pillar-card">
+              <h3>Coragem</h3>
+              <p style="color:var(--color-text-light); font-size:0.95rem;">para construir autonomia um passo de cada vez</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SEÇÃO 6: PLANOS E MODALIDADES DE APOIO
+         ================================================================= -->
+    <section id="modalidades" class="section">
+      <div class="container">
+        <span class="eyebrow">Transparência e acesso</span>
+        <h2 class="heading-lg">Escolha como deseja caminhar conosco</h2>
+        <p class="subtitle">
+          Comece gratuitamente com nossos guias e comunidade, e conte com nossa rede de especialistas sempre que sentir necessidade.
+        </p>
+
+        <div class="grid-2">
+          <div class="card reveal">
+            <span class="plan-tag" style="background-color:var(--color-primary);">Acesso Aberto</span>
+            <h3 class="heading-md">Comunidade &amp; Guia Escolar</h3>
+            <div class="plan-price">Gratuito</div>
+            <p style="color:var(--color-text-light);">Ideal para dar os primeiros passos com segurança e alinhar a rotina escolar.</p>
+            <ul class="plan-list">
+              <li>Download imediato do Guia Escolar em PDF</li>
+              <li>Acesso à Biblioteca de Conteúdos práticos</li>
+              <li>Triagem empática 24h com o Bot do Lufy</li>
+              <li>Espaço de troca e relatos moderados</li>
+            </ul>
+            <a href="#guia-escolar" class="btn btn-secondary" style="width:100%;">Baixar Guia Gratuito</a>
+          </div>
+
+          <div class="card plan-card featured reveal reveal-delay-1">
+            <span class="plan-tag">Saúde Integrada</span>
+            <h3 class="heading-md">Consultas com Especialistas</h3>
+            <div class="plan-price">Por Agendamento</div>
+            <p style="color:var(--color-text-light);">Atendimento online humanizado com profissionais especializados em DM1.</p>
+            <ul class="plan-list">
+              <li>Endocrinologistas, Nutricionistas e Psicólogos</li>
+              <li>Registro profissional (CRM/CRN/CRP) verificado</li>
+              <li>Agenda online integrada e sala de vídeo segura</li>
+              <li>Emissão digital de guias de exames e orientações</li>
+            </ul>
+            <a href="#guia-escolar" class="btn btn-primary" style="width:100%;">Conhecer Rede de Apoio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SEÇÃO 7: FAQ (PERGUNTAS FREQUENTES)
+         ================================================================= -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div style="text-align:center; max-width:680px; margin:0 auto 40px;">
+          <span class="eyebrow">Dúvidas frequentes</span>
+          <h2 class="heading-lg">Perguntas que toda família faz</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>A GlicoCare substitui o acompanhamento do meu endocrinologista?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Não. A GlicoCare é uma plataforma de apoio pedagógico, emocional e conexão com especialistas. Nossos guias e o assistente Lufy nunca prescrevem insulina ou alteram condutas médicas; eles ajudam você a organizar a rotina e seguir com segurança o plano definido pelo seu médico.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>O Guia Escolar em PDF é realmente gratuito?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Sim! O Guia Escolar é 100% gratuito. Criamos esse material porque acreditamos que nenhuma família deveria enfrentar sozinha a insegurança de preparar a escola para acolher uma criança ou adolescente com DM1.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Como funciona a seleção dos especialistas credenciados?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Todos os médicos, nutricionistas, psicólogos e educadores físicos passam por verificação obrigatória de registro de classe ativo (CRM, CRN, CRP, CREF) e alinhamento com nossa abordagem humanizada e sem julgamentos.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Os pagamentos das consultas são seguros?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Sim. Para proteção jurídica e financeira das famílias e dos profissionais, todo agendamento e pagamento ocorre exclusivamente dentro do ambiente seguro da plataforma GlicoCare, sem cobranças externas.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Meu filho recebeu o diagnóstico há poucos dias. Por onde começo?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Respira fundo: você não precisa aprender tudo hoje. Comece baixando o Guia Escolar gratuito abaixo e explore nossos artigos sobre “Hipoglicemia sem susto”. Dê um passo de cada vez.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SEÇÃO 8: GARANTIAS & COMPROMISSO ÉTICO
+         ================================================================= -->
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="guarantee-box reveal">
+          <div class="guarantee-shield" aria-hidden="true">🛡️</div>
+          <h2 class="heading-md">Compromisso Porto Seguro GlicoCare</h2>
+          <p style="color:var(--color-text-light); max-width:660px; margin:0 auto;">
+            Aqui você não encontra promessas milagrosas, dietas restritivas irresponsáveis ou julgamentos. Toda informação é revisada com foco em acolhimento prático, respeito à individualidade de cada organismo e proteção de dados conforme a LGPD.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SEÇÃO 9: FORMULÁRIO DE CONVERSÃO (GUIA ESCOLAR)
+         ================================================================= -->
+    <section id="guia-escolar" class="section">
+      <div class="container">
+        <div class="form-wrapper reveal">
+          <span class="eyebrow">Material gratuito</span>
+          <h2 class="heading-lg">Baixe agora o Guia Escolar DM1</h2>
+          <p style="color:var(--color-text-light); margin-bottom:24px;">
+            Um roteiro prático para alinhar família, professores e equipe de cuidado desde o primeiro dia de aula — sem pânico e com clareza.
+          </p>
+
+          <form id="guideForm">
+            <div class="form-group">
+              <label for="nome">Como você gostaria de ser chamado(a)?</label>
+              <input type="text" id="nome" name="nome" class="form-control" placeholder="Ex: Mariana" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Seu melhor e-mail para receber o PDF</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="seuemail@exemplo.com" required>
+            </div>
+
+            <label class="checkbox-row">
+              <input type="checkbox" required>
+              <span>Concordo em receber o Guia Escolar gratuito e conteúdos acolhedores da GlicoCare, respeitando a Lei Geral de Proteção de Dados (LGPD).</span>
+            </label>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              Receber Guia Escolar Gratuito →
+            </button>
+
+            <div class="form-feedback" id="formFeedback" role="status">
+              💚 Tudo certo! O link do seu Guia Escolar em PDF foi enviado para o seu e-mail. Respire fundo, estamos juntos nessa jornada!
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SEÇÃO 10: CTA FINAL
+         ================================================================= -->
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="cta-final-box reveal">
+          <h2>Dê um respiro para a sua rotina e traga mais paz para dentro de casa.</h2>
+          <p>
+            Você não precisa carregar o peso da vigilância constante sozinha. Conte com o Lufy, nossos guias práticos e uma rede que entende a sua realidade.
+          </p>
+          <a href="#guia-escolar" class="btn btn-primary" style="background-color:#FFFFFF; color:var(--color-primary);">
+            Quero Apoio Prático Agora →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================
+       SEÇÃO 11: RODAPÉ & DISCLAIMER MÉDICO
+       =================================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong style="font-family:var(--font-heading); font-size:1.3rem; color:var(--color-text);">🐨 GlicoCare</strong>
+          <p style="max-width:340px; margin-top:8px;">
+            Informação que acolhe. Cuidado que aproxima. Apoio pedagógico e emocional para famílias com Diabetes Tipo 1.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#inicio">Início</a>
+          <a href="#beneficios">Diferenciais</a>
+          <a href="#lufy">Conheça o Lufy</a>
+          <a href="#modalidades">Especialistas</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+
+      <div class="disclaimer-box">
+        <strong>Aviso Importante de Saúde:</strong> A GlicoCare oferece suporte educacional, acolhimento emocional e conexão com profissionais de saúde habilitados. O conteúdo desta página e as interações com o assistente Lufy têm caráter exclusivamente informativo e pedagógico, <strong>não substituindo consultas, diagnósticos ou prescrições médicas</strong>. Em casos de hipoglicemia severa, hiperglicemia persistente ou emergências, siga imediatamente o plano de ação do seu endocrinologista ou procure o serviço de urgência mais próximo.
+      </div>
+
+      <p style="font-size:0.8rem; text-align:center;">
+        © 2026 GlicoCare — Todos os direitos reservados. Feito com empatia para famílias DM1.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       WIDGET FLUTUANTE DO MASCOTE LUFY (BOT DE TRIAGEM POR CENÁRIOS)
+       =================================================================== -->
+  <button class="lufy-widget-trigger" id="lufyTrigger" aria-label="Falar com o Lufy">
+    <div class="lufy-trigger-avatar">
+      🐨
+      <span class="lufy-online-dot"></span>
+    </div>
+    <div class="lufy-trigger-text">
+      <small>Precisa de apoio?</small>
+      <strong>Fale com o Lufy</strong>
+    </div>
+  </button>
+
+  <div class="lufy-chat-window" id="lufyWindow" role="dialog" aria-label="Assistente Virtual Lufy">
+    <div class="lufy-chat-header">
+      <div>
+        <strong style="display:block; font-family:var(--font-heading);">🐨 Lufy — Guardião GlicoCare</strong>
+        <small style="opacity:0.9;">Acolhimento e triagem rápida</small>
+      </div>
+      <button class="lufy-chat-close" id="lufyClose" aria-label="Fechar chat">×</button>
+    </div>
+
+    <div class="lufy-chat-body" id="lufyChatBody">
+      <div class="lufy-msg">
+        Olá! Sou o Lufy. Respire fundo, estou aqui com você. O que está acontecendo agora?
+      </div>
+
+      <button class="lufy-scenario-btn" data-scenario="alta">🩸 A glicemia está muito alta</button>
+      <button class="lufy-scenario-btn" data-scenario="baixa">🍬 A glicemia está muito baixa</button>
+      <button class="lufy-scenario-btn" data-scenario="escola">🏫 Dúvida ou conflito na escola</button>
+      <button class="lufy-scenario-btn" data-scenario="madrugada">🌙 Madrugada difícil / Exaustão</button>
+
+      <div id="lufyResponseArea"></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       JAVASCRIPT MÍNIMO E PERFORMÁTICO
+       =================================================================== -->
+  <script>
+    // 1. Menu Mobile Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileDrawer.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.textContent = isOpen ? '✕' : '☰';
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      });
+    });
+
+    // 2. Acordeão FAQ
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isOpen = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isOpen) item.classList.add('active');
+      });
+    });
+
+    // 3. Formulário de Download do Guia Escolar
+    const guideForm = document.getElementById('guideForm');
+    const formFeedback = document.getElementById('formFeedback');
+
+    guideForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formFeedback.style.display = 'block';
+      guideForm.reset();
+    });
+
+    // 4. Widget Interativo do Lufy (Triagem por Cenários com Disclaimer Médico)
+    const lufyTrigger = document.getElementById('lufyTrigger');
+    const lufyWindow = document.getElementById('lufyWindow');
+    const lufyClose = document.getElementById('lufyClose');
+    const lufyResponseArea = document.getElementById('lufyResponseArea');
+
+    lufyTrigger.addEventListener('click', () => {
+      lufyWindow.classList.toggle('open');
+    });
+
+    lufyClose.addEventListener('click', () => {
+      lufyWindow.classList.remove('open');
+    });
+
+    const lufyResponses = {
+      alta: '<strong>Ei, respira fundo.</strong> Estou aqui com você. Verifique se há cetonas ou sintomas de mal-estar e siga rigorosamente o plano de correção prescrito pelo seu endocrinologista.<br><br>⚠️ <em>Aviso médico: Em caso de vômitos, dor abdominal ou sonolência, procure atendimento de emergência imediatamente.</em>',
+      baixa: '<strong>Calma, um passo de cada vez.</strong> Aplique a regra dos 15g de carboidrato de absorção rápida conforme orientação médica e aguarde 15 minutos para medir novamente.<br><br>⚠️ <em>Aviso médico: Se houver confusão mental, desmaio ou dificuldade para engolir, acione o serviço de emergência imediatamente.</em>',
+      escola: '<strong>Você não está sozinha nessa conversa.</strong> Baixe o nosso <em>Guia Escolar em PDF</em> aqui na página: ele traz um roteiro claro e acolhedor para alinhar cuidados básicos com professores e coordenadores sem criar alarmismo.',
+      madrugada: '<strong>Eu sei o quanto essas noites pesam.</strong> O cansaço da vigília é real e válido. Se a glicemia estiver estável conforme a meta do seu médico, tente descansar alguns minutos. Você está fazendo um trabalho extraordinário.'
+    };
+
+    document.querySelectorAll('.lufy-scenario-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-scenario');
+        lufyResponseArea.innerHTML = `<div class="lufy-msg" style="background-color:#FFFFFF; border:1px solid var(--color-cta); margin-top:10px;">${lufyResponses[key]}</div>`;
+      });
+    });
+
+    // 5. Scroll Reveal suave
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
